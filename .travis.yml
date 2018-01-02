@@ -22,6 +22,13 @@ install:
   - sudo apt-get install -qq cppcheck
 
 script: 
+  # cppcheck
+  - cppcheck --quiet --error-exitcode=1 . 
+  # OCLint
+  - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/do_oclint
+  - chmod +x do_oclint
+  - ./do_oclint
+  # Build, run and test the code
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/main.pro
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/build
   - chmod +x build
@@ -29,15 +36,9 @@ script:
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/test
   - chmod +x test
   - ./test
-  # Get code coverage
+  # Get code coverage badge (unneeded, codecov is tested by 'test' already
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/get_code_cov
   - chmod +x get_code_cov
   - ./get_code_cov
   - codecov
-  # cppcheck
-  - cppcheck --quiet --error-exitcode=1 . 
-  # OCLint
-  - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/do_oclint
-  - chmod +x do_oclint
-  - ./do_oclint
 
