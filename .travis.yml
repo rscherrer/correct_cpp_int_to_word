@@ -28,11 +28,8 @@ script:
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/do_oclint
   - chmod +x do_oclint
   - ./do_oclint
-  # Build, run and test the code
+  # Build, run and test the release version
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/main.pro
-  - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/build
-  - chmod +x build
-  - ./build
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/test
   - chmod +x test
   - ./test

@@ -26,10 +26,10 @@ Call to `hello_cli`|Output|Exit status
 `./int_to_word`|Any|1
 `./int_to_word 1`|`one` (with newline)|0
 `./int_to_word 2`|`two` (with newline)|0
-`./int_to_word 2`|`three` (with newline)|0
-`./int_to_word 2`|`four` (with newline)|0
-`./int_to_word 2`|`five` (with newline)|0
-`./int_to_word 2`|`six` (with newline)|0
+`./int_to_word 3`|`three` (with newline)|0
+`./int_to_word 4`|`four` (with newline)|0
+`./int_to_word 5`|`five` (with newline)|0
+`./int_to_word 6`|`six` (with newline)|0
 `./int_to_word nonsense`|Any|1
 `./int_to_word 1 2`|Any|1
 
