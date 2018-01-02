@@ -32,25 +32,34 @@ int do_main(const std::vector<std::string>& args)
   return 0;
 }
 
+void test_do_main()
+{
+  assert(do_main( { "main" } ) == 1);
+  assert(do_main( { "main", "too", "many" } ) == 1);
+  assert(do_main( { "main", "0" } ) == 1);
+  assert(do_main( { "main", "7" } ) == 1);
+  assert(do_main( { "main", "1" } ) == 0);
+}
+
+void test_int_to_word()
+{
+  assert(int_to_word(1) == "one");
+  assert(int_to_word(2) == "two");
+  assert(int_to_word(3) == "three");
+  assert(int_to_word(4) == "four");
+  assert(int_to_word(5) == "five");
+  assert(int_to_word(6) == "six");
+}
+
+void test()
+{
+  test_do_main();
+  test_int_to_word();
+}
 
 int main(int argc, char* argv[]) 
 {
-  {
-    assert(do_main( { "main" } ) == 1);
-    assert(do_main( { "main", "too", "many" } ) == 1);
-    assert(do_main( { "main", "0" } ) == 1);
-    assert(do_main( { "main", "7" } ) == 1);
-    assert(do_main( { "main", "1" } ) == 0);
-  }
-  {
-    assert(int_to_word(1) == "one");
-    assert(int_to_word(2) == "two");
-    assert(int_to_word(3) == "three");
-    assert(int_to_word(4) == "four");
-    assert(int_to_word(5) == "five");
-    assert(int_to_word(6) == "six");
-  }
-
+  test();
   const std::vector<std::string> args(argv, argv + argc);
   return do_main(args);
 }
