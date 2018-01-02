@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     assert(do_main( { "main", "7" } ) == 1);
     assert(do_main( { "main", "1" } ) == 0);
   }
-  }
+  {
     assert(int_to_word(1) == "one");
     assert(int_to_word(2) == "two");
     assert(int_to_word(3) == "three");
