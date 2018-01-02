@@ -8,7 +8,7 @@ master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_int_t
 
 ## Goal
 
- * Write an application with 100% code covers
+ * Write an application with 100% code coverage
 
 ## Prerequisites
 
@@ -42,4 +42,5 @@ main(argc, argv)
 }
 ```
 
- * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments)
+ * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments), 
+   see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_to_get_100_percent_code_coverage.md)
