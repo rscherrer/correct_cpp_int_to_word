@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+*.gcov
+*.gcda
+*.gcno
+debug/
+Makefile
+Makefile.*
+get_code_cov
+main
