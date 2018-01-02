@@ -30,6 +30,8 @@ script:
   - chmod +x test
   - ./test
   # Get code coverage
+  - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/int_to_word/get_code_cov
+  - chmod +x get_code_cov
   - ./get_code_cov
   - codecov
   # cppcheck
