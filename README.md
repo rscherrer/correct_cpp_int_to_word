@@ -69,3 +69,7 @@ int main(int argc, char* argv[])
 
  * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments), 
    see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/get_100_percent_code_coverage.md)
+
+## External links
+
+ * [Download the Qt Creator file `main.pro`](https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/shared/main.pro)
