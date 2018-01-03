@@ -2,24 +2,50 @@
 #include <string>
 #include <vector>
 
-int main(int argc, char* argv[]) 
+int main(int argc, char* argv[])
 {
-  if (argc != 2)
-  {
-    return 1;
-  }
+  if (argc != 2) return 1;
   try
   {
     const int i{std::stoi(argv[1])};
-    switch (i)
+    if (i == 0)
     {
-      case 1: std::cout << "one\n"; break;
-      case 2: std::cout << "two\n"; break;
-      case 3: std::cout << "three\n"; break;
-      case 4: std::cout << "four\n"; break;
-      case 5: std::cout << "five\n"; break;
-      case 6: std::cout << "six\n"; break;
-      default: throw std::invalid_argument("i must be in range [1, 6]");
+      std::cout << "false\n";
+      return 0;
+    }
+    //Collect the proper divisors
+    std::vector<int> v;
+    if (i < 2)
+    {
+      //v is okay as it is
+    }
+    else if (i == 2)
+    {
+      v.push_back(1);
+    }
+    else
+    {
+      for (int j=1; j!=i-1; ++j)
+      {
+        if (i % j == 0)
+        {
+          v.push_back(j);
+        }
+      }
+    }
+    //sum the proper divisors
+    int sum{0};
+    for (const int j: v) { sum += j; }
+    //is it perfect?
+    const bool is_perfect{sum == i};
+    //show
+    if (is_perfect)
+    {
+      std::cout << "true\n";
+    }
+    else
+    {
+      std::cout << "false\n";
     }
   }
   catch (const std::exception&)
