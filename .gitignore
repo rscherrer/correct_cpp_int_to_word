@@ -40,3 +40,4 @@ get_code_cov
 main
 *.pro.user
 *.pro.user
+main.pro
