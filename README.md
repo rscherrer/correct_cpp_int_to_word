@@ -12,7 +12,7 @@ master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_int_t
 
 ## Prerequisites
 
- * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_this_course_works.md)
+ * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/how_this_course_works.md)
  * Have written [a correct 'is_odd' program](https://github.com/richelbilderbeek/correct_cpp_is_odd)
 
 ## Exercise
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 ```
 
  * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments), 
-   see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/get_100_percent_code_coverage.md)
+   see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/get_100_percent_code_coverage.md)
 
 ## External links
 
