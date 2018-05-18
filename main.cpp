@@ -1,71 +1,36 @@
-#include <cassert>
+/** @file */
+/** @file */
+/** @file */
+/** @file */
+/** @file */
+/** @file */
+/** @file */
 #include <iostream>
 #include <string>
 #include <vector>
 
-/// Converts integers to its corresponding string
-std::string int_to_word(const int value)
+int main(int argc, char* argv[]) 
 {
-  switch (value)
+  if (argc != 2)
   {
-    case 1: return "one";
-    case 2: return "two";
-    case 3: return "three";
-    case 4: return "four";
-    case 5: return "five";
-    case 6: return "six";
-    default: throw std::invalid_argument("value must be in range [1, 6]");
+    return 1;
   }
-}
-
-/// Implementation of int_to_word main function
-int do_main(const std::vector<std::string>& args)
-{
-  if (args.size() != 2) return 1;
   try
   {
-    const int value{std::stoi(args[1])};
-    std::cout << int_to_word(value) << '\n';
+    const int value{std::stoi(argv[1])};
+    switch (value)
+    {
+      case 1: std::cout << "one\n"; break;
+      case 2: std::cout << "two\n"; break;
+      case 3: std::cout << "three\n"; break;
+      case 4: std::cout << "four\n"; break;
+      case 5: std::cout << "five\n"; break;
+      case 6: std::cout << "six\n"; break;
+      default: throw std::invalid_argument("value must be in range [1, 6]");
+    }
   }
   catch (const std::exception&)
   {
     return 1;
   }
-  return 0;
-}
-
-/// Tests the exit output of the do_main function
-void test_do_main()
-{
-  assert(do_main( { "main" } ) == 1);
-  assert(do_main( { "main", "too", "many" } ) == 1);
-  assert(do_main( { "main", "0" } ) == 1);
-  assert(do_main( { "main", "1" } ) == 0);
-  assert(do_main( { "main", "7" } ) == 1);
-}
-
-/// Tests the output of the int_to_word function
-void test_int_to_word()
-{
-  assert(int_to_word(1) == "one");
-  assert(int_to_word(2) == "two");
-  assert(int_to_word(3) == "three");
-  assert(int_to_word(4) == "four");
-  assert(int_to_word(5) == "five");
-  assert(int_to_word(6) == "six");
-}
-
-/// Runs all tests for this program
-void test()
-{
-  test_do_main();
-  test_int_to_word();
-}
-
-/// int_to_word main function, that also tests its implementation
-int main(int argc, char* argv[]) 
-{
-  test();
-  const std::vector<std::string> args(argv, argv + argc);
-  return do_main(args);
 }
