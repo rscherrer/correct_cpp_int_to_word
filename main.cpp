@@ -43,7 +43,7 @@ int doMain(const std::vector<std::string>& args)
 }
 
 /// Function to test the program
-void test(const std::string &programName)
+void test(const std::string programName)
 {
     assert(doMain( { programName } ) == 1);
     assert(doMain( { programName, "1" } ) == 0);
