@@ -54,8 +54,11 @@ int doMain(const std::vector<std::string>& args, const bool &print = false)
 }
 
 /// Function to test the program
-void test(const std::string &programName)
+void test(const std::vector<std::string> &args)
 {
+
+    const std::string programName(args[0]);
+    
     assert(doMain( { programName } ) == 1);
     assert(doMain( { programName, "1" } ) == 0);
     assert(doMain( { programName, "2" } ) == 0);
@@ -73,10 +76,9 @@ int main(int argc, char * argv[])
 {
 
     const std::vector<std::string> args(argv, argv + argc);
-    const std::string programName(args[0]);
-
+    
     // Test the program
-    test(programName);
+    test(args);
 
     // Run the program
     return doMain(args, true);
