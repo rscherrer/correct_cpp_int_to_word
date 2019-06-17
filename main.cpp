@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 
+
 /// Perform the main task and output to screen
 int doMain(const std::vector<std::string>& args)
 {
@@ -47,6 +48,7 @@ int doMain(const std::vector<std::string>& args)
     return 0;
 }
 
+
 /// Perform the main task, test version without printed output
 int doMainNoPrint(const std::vector<std::string>& args)
 {
@@ -83,6 +85,7 @@ int doMainNoPrint(const std::vector<std::string>& args)
     return 0;
 }
 
+
 /// Function to test the program
 void test(const std::vector<std::string> &args)
 {
@@ -100,6 +103,7 @@ void test(const std::vector<std::string> &args)
     assert(doMainNoPrint( { programName, "1", "2" } ) == 1);
     assert(doMainNoPrint( { programName, "7" } ) == 1);
 }
+
 
 /// Program that converts a number into its word
 int main(int argc, char * argv[])
