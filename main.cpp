@@ -42,14 +42,9 @@ int doMain(const std::vector<std::string>& args)
     return 0;
 }
 
-/// Program that converts a number into its word
-int main(int argc, char * argv[])
+/// Function to test the program
+void test(const std::string &programName)
 {
-
-    const std::vector<std::string> args(argv, argv + argc);
-
-    const std::string programName(args[0]);
-
     assert(doMain( { programName } ) == 1);
     assert(doMain( { programName, "1" } ) == 0);
     assert(doMain( { programName, "2" } ) == 0);
@@ -60,7 +55,19 @@ int main(int argc, char * argv[])
     assert(doMain( { programName, "nonsense" } ) == 1);
     assert(doMain( { programName, "1", "2" } ) == 1);
     assert(doMain( { programName, "7" } ) == 1);
+}
 
+/// Program that converts a number into its word
+int main(int argc, char * argv[])
+{
+
+    const std::vector<std::string> args(argv, argv + argc);
+    const std::string programName(args[0]);
+
+    // Test the program
+    test(programName);
+
+    // Run the program
     return doMain(args);
 
 }
