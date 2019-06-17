@@ -59,6 +59,7 @@ int main(int argc, char * argv[])
     assert(doMain( { programName, "6" } ) == 0);
     assert(doMain( { programName, "nonsense" } ) == 1);
     assert(doMain( { programName, "1", "2" } ) == 1);
+    assert(doMain( { programName, "7" } ) == 1);
 
     return doMain(args);
 
