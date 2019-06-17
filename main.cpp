@@ -25,14 +25,25 @@ int doMain(const std::vector<std::string>& args)
             case 5: std::cout << "five\n"; break;
             case 6: std::cout << "six\n"; break;
 
-            default: throw std::invalid_argument("Input number must be in range [1, 6]");
+            default: throw std::runtime_error("Input number must be in range [1, 6].");
         }
     }
-    catch (const std::exception& err)
+    catch (const std::runtime_error& err)
     {
         std::cout << err.what() << '\n';
         return 1;
     }
+    catch (const std::invalid_argument& err)
+    {
+        std::cout << "Argument is not a number\n";
+        return 1;
+    }
+    catch (const std::out_of_range& err)
+    {
+        std::cout << "Input number is too big\n";
+        return 1;
+    }
+    
     return 0;
 }
 
