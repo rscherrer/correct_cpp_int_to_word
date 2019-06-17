@@ -2,7 +2,7 @@
 
 Branch|[Travis CI](https://travis-ci.org)|[Codecov](https://www.codecov.io)
 ---|---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_int_to_word.svg?branch=master)](https://travis-ci.org/richelbilderbeek/correct_cpp_int_to_word)|[![codecov.io](https://codecov.io/github/richelbilderbeek/correct_cpp_int_to_word/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/correct_cpp_int_to_word/branch/master)
+master|[![Build Status](https://travis-ci.org/rscherrer/correct_cpp_int_to_word.svg?branch=master)](https://travis-ci.org/rscherrer/correct_cpp_int_to_word)|[![codecov.io](https://codecov.io/github/rscherrer/correct_cpp_int_to_word/coverage.svg?branch=master)](https://codecov.io/github/rscherrer/correct_cpp_int_to_word/branch/master)
 
 [Correct C++](https://github.com/richelbilderbeek/correct_cpp) chapter 'Hello CLI'.
 
@@ -13,7 +13,7 @@ master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_int_t
 ## Prerequisites
 
  * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/how_this_course_works.md)
- * Have written [a correct 'is_odd' program](https://github.com/richelbilderbeek/correct_cpp_is_odd)
+ * Have written [a correct 'is_odd' program](https://github.com/rscherrer/correct_cpp_is_odd)
 
 ## Exercise
 
