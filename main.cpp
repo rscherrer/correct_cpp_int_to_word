@@ -35,15 +35,10 @@ int doMain(const std::vector<std::string>& args)
     }
     catch (const std::invalid_argument& err)
     {
-        std::cout << "Argument is not a number\n";
+        std::cout << "Argument is not a number.\n";
         return 1;
     }
-    catch (const std::out_of_range& err)
-    {
-        std::cout << "Input number is too big\n";
-        return 1;
-    }
-    
+
     return 0;
 }
 
