@@ -4,7 +4,7 @@
 #include <iostream>
 
 /// Perform the main task
-int doMain(const std::vector<std::string>& args)
+int doMain(const std::vector<std::string>& args, const bool &print = false)
 {
     const size_t argc = args.size();
     try
@@ -16,26 +16,37 @@ int doMain(const std::vector<std::string>& args)
 
         const int i{std::stoi(args[1])};
 
+        std::string output;
+
         switch (i)
         {
-            case 1: std::cout << "one\n"; break;
-            case 2: std::cout << "two\n"; break;
-            case 3: std::cout << "three\n"; break;
-            case 4: std::cout << "four\n"; break;
-            case 5: std::cout << "five\n"; break;
-            case 6: std::cout << "six\n"; break;
+            case 1: output = "one"; break;
+            case 2: output = "two"; break;
+            case 3: output = "three"; break;
+            case 4: output = "four"; break;
+            case 5: output = "five"; break;
+            case 6: output = "six"; break;
 
             default: throw std::runtime_error("Input number must be in range [1, 6].");
         }
+
+        if (print) {
+            std::cout << output << '\n';
+        }
+
     }
     catch (const std::runtime_error& err)
     {
-        std::cout << err.what() << '\n';
+        if (print) {
+            std::cout << err.what() << '\n';
+        }
         return 1;
     }
     catch (const std::invalid_argument& err)
     {
-        std::cout << "Argument is not a number.\n";
+        if (print) {
+            std::cout << "Argument is not a number.\n";
+        }
         return 1;
     }
 
@@ -43,7 +54,7 @@ int doMain(const std::vector<std::string>& args)
 }
 
 /// Function to test the program
-void test(const std::string programName)
+void test(const std::string &programName)
 {
     assert(doMain( { programName } ) == 1);
     assert(doMain( { programName, "1" } ) == 0);
@@ -68,6 +79,6 @@ int main(int argc, char * argv[])
     test(programName);
 
     // Run the program
-    return doMain(args);
+    return doMain(args, true);
 
 }
