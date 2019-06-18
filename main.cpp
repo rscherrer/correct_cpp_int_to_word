@@ -4,115 +4,61 @@
 #include <iostream>
 
 
-/// Function to run the program
-int doMain(const std::vector<std::string>& args, std::string &output)
+/// Function to check the number of arguments
+int checkNumArguments(const int &argc)
 {
-
-    if (args.size() > 2u) {
-        output = "Error: Too many arguments.";
-        return 1;
-    } else if (args.size() < 2u) {
-        output = "Error: No arguments were provided.";
-        return 1;
+    if (argc != 2u) {
+        throw std::runtime_error("Error: Incorrect number of arguments.");
     }
+}
 
-    int number;
 
-    try
-    {
-        number = std::stoi(args[1]);
-    }
-    catch (const std::invalid_argument&)
-    {
-        output = "Error: The argument is not an integer.";
-        return 1;
-    }
-
+/// Function turn an integer into a word
+void intToWord(const int &number, std::ostream &os = std::cout)
+{
     switch (number)
     {
-        case 1: output = "one"; break;
-        case 2: output = "two"; break;
-        case 3: output = "three"; break;
-        case 4: output = "four"; break;
-        case 5: output = "five"; break;
-        case 6: output = "six"; break;
-        default: {
-            output = "Error: Input number must be in range [1, 6].";
-            return 1;
-        };
+        case 1: os << "one\n"; break;
+        case 2: os << "two\n"; break;
+        case 3: os << "three\n"; break;
+        case 4: os << "four\n"; break;
+        case 5: os << "five\n"; break;
+        case 6: os << "six\n"; break;
+
+        default: throw std::runtime_error("Error: Input number must be in range [1, 6].");
     }
-
-    return 0;
-
-}
-
-#if !defined(NDEBUG)
-
-/// Function to test the task performing behavior of the program
-void testUse(const std::vector<std::string> &args, std::string &output)
-{
-    assert(doMain( { args[0], "1" }, output) == 0);
-    assert(output == "one");
-
-    assert(doMain( { args[0], "2" }, output) == 0);
-    assert(output == "two");
-
-    assert(doMain( { args[0], "3" }, output) == 0);
-    assert(output == "three");
-
-    assert(doMain( { args[0], "4" }, output) == 0);
-    assert(output == "four");
-
-    assert(doMain( { args[0], "5" }, output) == 0);
-    assert(output == "five");
-
-    assert(doMain( { args[0], "6" }, output) == 0);
-    assert(output == "six");
 }
 
 
-/// Function to test the error handling behavior of the program
-void testAbuse(const std::vector<std::string> &args, std::string &output)
-{
-    assert(doMain( { args[0], "7" }, output) == 1);
-    assert(output == "Error: Input number must be in range [1, 6].");
-
-    assert(doMain( { args[0], "nonsense" }, output) == 1);
-    assert(output == "Error: The argument is not an integer.");
-
-    assert(doMain( { args[0], "1", "2" }, output) == 1);
-    assert(output == "Error: Too many arguments.");
-
-    assert(doMain( { args[0] }, output) == 1);
-    assert(output == "Error: No arguments were provided.");
-}
-
-
-/// Function to test the program
-void test(const std::vector<std::string> &args, std::string &output)
-{
-    testUse(args, output);
-    testAbuse(args, output);
-}
-
-#endif
 
 /// Program to convert an integer into its word
 int main(int argc, char * argv[])
 {
     // Preparation
     const std::vector<std::string> args(argv, argv + argc);
-    std::string output;
 
-    #if !defined(NDEBUG)
+    try
+    {
+        // Check arguments
+        checkNumArguments(argc);
 
-    // Test the program
-    test(args, output);
+        // Convert argument into number
+        const int number = std::stoi(args[1u]);
 
-    #endif
+        // Convert number into word
+        intToWord(number);
+    }
+    catch (std::runtime_error &err)
+    {
+        std::cout << err.what() << '\n';
+        return 1;
+    }
+    catch (std::invalid_argument&)
+    {
+        std::cout << "Error: Argument is not an integer.\n";
+        return 1;
+    }
 
-    // Run the program
-    const int exitCode = doMain(args, output);
-    std::cout << output << '\n';
-    return exitCode;
+    return 0;
+
 }
