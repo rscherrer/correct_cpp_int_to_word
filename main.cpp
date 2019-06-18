@@ -22,7 +22,7 @@ int doMain(const std::vector<std::string>& args, std::string &output)
     {
         number = std::stoi(args[1]);
     }
-    catch (std::invalid_argument&)
+    catch (const std::invalid_argument&)
     {
         output = "Error: The argument is not an integer.";
         return 1;
