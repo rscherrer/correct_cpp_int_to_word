@@ -46,6 +46,7 @@ int doMain(const std::vector<std::string>& args, std::string &output)
 
 }
 
+#if !defined(NDEBUG)
 
 /// Function to test the task performing behavior of the program
 void testUse(const std::vector<std::string> &args, std::string &output)
@@ -94,6 +95,7 @@ void test(const std::vector<std::string> &args, std::string &output)
     testAbuse(args, output);
 }
 
+#endif
 
 /// Program to convert an integer into its word
 int main(int argc, char * argv[])
