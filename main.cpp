@@ -102,8 +102,12 @@ int main(int argc, char * argv[])
     const std::vector<std::string> args(argv, argv + argc);
     std::string output;
 
+    #if !defined(NDEBUG)
+
     // Test the program
     test(args, output);
+
+    #endif
 
     // Run the program
     const int exitCode = doMain(args, output);
