@@ -5,7 +5,7 @@
 
 
 /// Function to check the number of arguments
-int checkNumArguments(const int &argc)
+void checkNumArguments(const size_t &argc)
 {
     if (argc != 2u) {
         throw std::runtime_error("Error: Incorrect number of arguments.");
@@ -30,17 +30,13 @@ void intToWord(const int &number, std::ostream &os = std::cout)
 }
 
 
-
-/// Program to convert an integer into its word
-int main(int argc, char * argv[])
+/// Function to run the main task
+int doMain(const std::vector<std::string> &args)
 {
-    // Preparation
-    const std::vector<std::string> args(argv, argv + argc);
-
     try
     {
         // Check arguments
-        checkNumArguments(argc);
+        checkNumArguments(args.size());
 
         // Convert argument into number
         const int number = std::stoi(args[1u]);
@@ -60,5 +56,49 @@ int main(int argc, char * argv[])
     }
 
     return 0;
+}
+
+
+/// Function to test task performing behavior of the program
+void testUse(const std::string &programName)
+{
+    assert(doMain( { programName, "1" } ) == 0);
+    assert(doMain( { programName, "2" } ) == 0);
+    assert(doMain( { programName, "3" } ) == 0);
+    assert(doMain( { programName, "4" } ) == 0);
+    assert(doMain( { programName, "5" } ) == 0);
+    assert(doMain( { programName, "6" } ) == 0);
+}
+
+
+/// Function to test error handling behavior of the program
+void testAbuse(const std::string &programName)
+{
+    assert(doMain( { programName } ) == 1);
+    assert(doMain( { programName, "1", "2"} ) == 1);
+    assert(doMain( { programName, "7" } ) == 1);
+    assert(doMain( { programName, "nonsense" } ) == 1);
+}
+
+
+/// Function to test the program
+void test(const std::string &programName)
+{
+    testUse(programName);
+    testAbuse(programName);
+}
+
+
+/// Program to convert an integer into its word
+int main(int argc, char * argv[])
+{
+    // Preparation
+    const std::vector<std::string> args(argv, argv + argc);
+
+    // Test the program
+    test(args[1]);
+
+    // Run the program
+    return doMain(args);
 
 }
