@@ -4,117 +4,109 @@
 #include <iostream>
 
 
-/// Perform the main task and output to screen
-int doMain(const std::vector<std::string>& args)
+/// Function to run the program
+int doMain(const std::vector<std::string>& args, std::string &output)
 {
-    const size_t argc = args.size();
+
+    if (args.size() > 2u) {
+        output = "Error: Too many arguments.";
+        return 1;
+    } else if (args.size() < 2u) {
+        output = "Error: No arguments were provided.";
+        return 1;
+    }
+
+    int number;
+
     try
     {
-        if (argc != 2)
-        {
-            throw std::runtime_error("Exactly one argument must be provided.");
-        }
-
-        const int i{std::stoi(args[1])};
-
-        std::string output;
-
-        switch (i)
-        {
-            case 1: output = "one"; break;
-            case 2: output = "two"; break;
-            case 3: output = "three"; break;
-            case 4: output = "four"; break;
-            case 5: output = "five"; break;
-            case 6: output = "six"; break;
-
-            default: throw std::runtime_error("Input number must be in range [1, 6].");
-        }
-
-        std::cout << output << '\n';
-
+        number = std::stoi(args[1]);
     }
-    catch (const std::runtime_error& err)
+    catch (std::invalid_argument&)
     {
-        std::cout << err.what() << '\n';
+        output = "Error: The argument is not an integer.";
         return 1;
     }
-    catch (const std::invalid_argument& err)
+
+    switch (number)
     {
-        std::cout << "Argument is not a number.\n";
-        return 1;
+        case 1: output = "one"; break;
+        case 2: output = "two"; break;
+        case 3: output = "three"; break;
+        case 4: output = "four"; break;
+        case 5: output = "five"; break;
+        case 6: output = "six"; break;
+        default: {
+            output = "Error: Input number must be in range [1, 6].";
+            return 1;
+        };
     }
 
     return 0;
+
 }
 
 
-/// Perform the main task, test version without printed output
-int doMainNoPrint(const std::vector<std::string>& args)
+/// Function to test the task performing behavior of the program
+void testUse(const std::vector<std::string> &args, std::string &output)
 {
-    const size_t argc = args.size();
-    try
-    {
-        if (argc != 2)
-        {
-            throw std::runtime_error("Exactly one argument must be provided.");
-        }
+    assert(doMain( { args[0], "1" }, output) == 0);
+    assert(output == "one");
 
-        const int i{std::stoi(args[1])};
+    assert(doMain( { args[0], "2" }, output) == 0);
+    assert(output == "two");
 
-        std::string output;
+    assert(doMain( { args[0], "3" }, output) == 0);
+    assert(output == "three");
 
-        switch (i)
-        {
-            case 1: break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
-            case 5: break;
-            case 6: break;
+    assert(doMain( { args[0], "4" }, output) == 0);
+    assert(output == "four");
 
-            default: throw std::runtime_error("Input number must be in range [1, 6].");
-        }
+    assert(doMain( { args[0], "5" }, output) == 0);
+    assert(output == "five");
 
-    }
-    catch (const std::exception&)
-    {
-        return 1;
-    }
+    assert(doMain( { args[0], "6" }, output) == 0);
+    assert(output == "six");
+}
 
-    return 0;
+
+/// Function to test the error handling behavior of the program
+void testAbuse(const std::vector<std::string> &args, std::string &output)
+{
+    assert(doMain( { args[0], "7" }, output) == 1);
+    assert(output == "Error: Input number must be in range [1, 6].");
+
+    assert(doMain( { args[0], "nonsense" }, output) == 1);
+    assert(output == "Error: The argument is not an integer.");
+
+    assert(doMain( { args[0], "1", "2" }, output) == 1);
+    assert(output == "Error: Too many arguments.");
+
+    assert(doMain( { args[0] }, output) == 1);
+    assert(output == "Error: No arguments were provided.");
 }
 
 
 /// Function to test the program
-void test(const std::vector<std::string> &args)
+void test(const std::vector<std::string> &args, std::string &output)
 {
-
-    const std::string programName(args[0]);
-
-    assert(doMainNoPrint( { programName } ) == 1);
-    assert(doMainNoPrint( { programName, "1" } ) == 0);
-    assert(doMainNoPrint( { programName, "2" } ) == 0);
-    assert(doMainNoPrint( { programName, "3" } ) == 0);
-    assert(doMainNoPrint( { programName, "4" } ) == 0);
-    assert(doMainNoPrint( { programName, "5" } ) == 0);
-    assert(doMainNoPrint( { programName, "6" } ) == 0);
-    assert(doMainNoPrint( { programName, "nonsense" } ) == 1);
-    assert(doMainNoPrint( { programName, "1", "2" } ) == 1);
-    assert(doMainNoPrint( { programName, "7" } ) == 1);
+    testUse(args, output);
+    testAbuse(args, output);
 }
 
 
-/// Program that converts a number into its word
+/// Program to convert an integer into its word
 int main(int argc, char * argv[])
 {
-
+    // Preparation
     const std::vector<std::string> args(argv, argv + argc);
+    std::string output;
 
     // Test the program
-    test(args);
+    test(args, output);
 
     // Run the program
-    return doMain(args);
-
+    const int exitCode = doMain(args, output);
+    std::cout << output << '\n';
+    return exitCode;
 }
