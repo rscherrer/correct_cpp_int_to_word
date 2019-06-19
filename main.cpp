@@ -96,7 +96,7 @@ int main(int argc, char * argv[])
     const std::vector<std::string> args(argv, argv + argc);
 
     // Test the program
-    test(args[1]);
+    test(args[0u]);
 
     // Run the program
     return doMain(args);
