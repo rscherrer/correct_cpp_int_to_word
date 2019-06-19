@@ -14,16 +14,16 @@ void checkNumArguments(const size_t &argc)
 
 
 /// Function turn an integer into a word
-void intToWord(const int &number, std::ostream &os = std::cout)
+void intToWord(const int &number, std::ostream &outstream = std::cout)
 {
     switch (number)
     {
-        case 1: os << "one\n"; break;
-        case 2: os << "two\n"; break;
-        case 3: os << "three\n"; break;
-        case 4: os << "four\n"; break;
-        case 5: os << "five\n"; break;
-        case 6: os << "six\n"; break;
+        case 1: outstream << "one\n"; break;
+        case 2: outstream << "two\n"; break;
+        case 3: outstream << "three\n"; break;
+        case 4: outstream << "four\n"; break;
+        case 5: outstream << "five\n"; break;
+        case 6: outstream << "six\n"; break;
 
         default: throw std::runtime_error("Error: Input number must be in range [1, 6].");
     }
