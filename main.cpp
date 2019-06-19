@@ -5,11 +5,13 @@
 
 
 /// Function to check the number of arguments
-void checkNumArguments(const size_t &argc)
+int checkNumArguments(const size_t &argc)
 {
     if (argc != 2u) {
         throw std::runtime_error("Error: Incorrect number of arguments.");
-    }
+    } 
+    
+    return 0;
 }
 
 
@@ -62,6 +64,7 @@ int doMain(const std::vector<std::string> &args)
 /// Function to test task performing behavior of the program
 void testUse()
 {
+    assert(checkNumArguments(2u) == 0);
     assert(doMain( { "int_to_word", "1" } ) == 0);
     assert(doMain( { "int_to_word", "2" } ) == 0);
     assert(doMain( { "int_to_word", "3" } ) == 0);
