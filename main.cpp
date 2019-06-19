@@ -7,12 +7,7 @@
 /// Function to check the number of arguments
 int checkNumArguments(const size_t &argc)
 {
-    if (argc == 2u) {
-        return 0;
-    }
-    else {
-        throw std::runtime_error("Error: Incorrect number of arguments.");
-    }
+    if (argc != 2u) throw std::runtime_error("Error: Incorrect number of arguments.");
 }
 
 
