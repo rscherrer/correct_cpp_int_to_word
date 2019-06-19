@@ -44,12 +44,12 @@ int doMain(const std::vector<std::string> &args)
         // Convert number into word
         intToWord(number);
     }
-    catch (std::runtime_error &err)
+    catch (const std::runtime_error &err)
     {
         std::cout << err.what() << '\n';
         return 1;
     }
-    catch (std::invalid_argument&)
+    catch (const std::invalid_argument&)
     {
         std::cout << "Error: Argument is not an integer.\n";
         return 1;
