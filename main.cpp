@@ -4,13 +4,6 @@
 #include <iostream>
 
 
-/// Function to check the number of arguments
-int checkNumArguments(const size_t &argc)
-{
-    if (argc != 2u) throw std::runtime_error("Error: Incorrect number of arguments.");
-}
-
-
 /// Function turn an integer into a word
 void intToWord(const int &number, std::ostream &outstream = std::cout)
 {
@@ -34,8 +27,8 @@ int doMain(const std::vector<std::string> &args)
     try
     {
         // Check arguments
-        checkNumArguments(args.size());
-
+        if (args.size() != 2u) throw std::runtime_error("Error: Incorrect number of arguments.");
+        
         // Convert argument into number
         const int number = std::stoi(args[1u]);
 
@@ -60,7 +53,6 @@ int doMain(const std::vector<std::string> &args)
 /// Function to test task performing behavior of the program
 void testUse()
 {
-    assert(checkNumArguments(2u) == 0);
     assert(doMain( { "int_to_word", "1" } ) == 0);
     assert(doMain( { "int_to_word", "2" } ) == 0);
     assert(doMain( { "int_to_word", "3" } ) == 0);
