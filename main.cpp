@@ -60,32 +60,32 @@ int doMain(const std::vector<std::string> &args)
 
 
 /// Function to test task performing behavior of the program
-void testUse(const std::string &programName)
+void testUse()
 {
-    assert(doMain( { programName, "1" } ) == 0);
-    assert(doMain( { programName, "2" } ) == 0);
-    assert(doMain( { programName, "3" } ) == 0);
-    assert(doMain( { programName, "4" } ) == 0);
-    assert(doMain( { programName, "5" } ) == 0);
-    assert(doMain( { programName, "6" } ) == 0);
+    assert(doMain( { "int_to_word", "1" } ) == 0);
+    assert(doMain( { "int_to_word", "2" } ) == 0);
+    assert(doMain( { "int_to_word", "3" } ) == 0);
+    assert(doMain( { "int_to_word", "4" } ) == 0);
+    assert(doMain( { "int_to_word", "5" } ) == 0);
+    assert(doMain( { "int_to_word", "6" } ) == 0);
 }
 
 
 /// Function to test error handling behavior of the program
-void testAbuse(const std::string &programName)
+void testAbuse()
 {
-    assert(doMain( { programName } ) == 1);
-    assert(doMain( { programName, "1", "2"} ) == 1);
-    assert(doMain( { programName, "7" } ) == 1);
-    assert(doMain( { programName, "nonsense" } ) == 1);
+    assert(doMain( { "int_to_word" } ) == 1);
+    assert(doMain( { "int_to_word", "1", "2"} ) == 1);
+    assert(doMain( { "int_to_word", "7" } ) == 1);
+    assert(doMain( { "int_to_word", "nonsense" } ) == 1);
 }
 
 
 /// Function to test the program
-void test(const std::string &programName)
+void test()
 {
-    testUse(programName);
-    testAbuse(programName);
+    testUse();
+    testAbuse();
 }
 
 
@@ -96,7 +96,7 @@ int main(int argc, char * argv[])
     const std::vector<std::string> args(argv, argv + argc);
 
     // Test the program
-    test(args[0u]);
+    test();
 
     // Run the program
     return doMain(args);
