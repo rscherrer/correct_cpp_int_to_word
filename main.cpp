@@ -9,9 +9,10 @@ int checkNumArguments(const size_t &argc)
 {
     if (argc != 2u) {
         throw std::runtime_error("Error: Incorrect number of arguments.");
-    } 
-    
-    return 0;
+    }
+    else {
+        return 0;
+    }
 }
 
 
